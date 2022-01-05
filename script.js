@@ -6,25 +6,6 @@ const body = JSON.stringify({
     speciality: "frontEnd"
 });
 
-const getFunction = (method, url, itemId) =>{
-  
-    let xhr = new XMLHttpRequest();
-
-    xhr.open(method, url + itemId, true);
-    
-    xhr.headers = {'Content-type': 'application/json; charset=UTF-8'};
-    xhr.responseType = 'json';
-    xhr.send(null);
-
-    xhr.onload = function() {
-        // if(xhr.response.length){
-        //     console.log(`Готово, получили ${xhr.response.length} байт`);
-        // }
-        console.log("Method GET");
-        console.log(xhr.response);        
-    };  
-};
-
 const sendFunction = (method, url, parameters) => {
     let xhr = new XMLHttpRequest();
 
@@ -47,8 +28,6 @@ const sendFunction = (method, url, parameters) => {
     
     xhr.onerror = error => console.log(`Ошибка соединения ${error}`);
 };
-
-getFunction("GET", url, 44);
 
 sendFunction("POST", url, body);
 
