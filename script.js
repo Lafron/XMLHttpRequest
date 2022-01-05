@@ -1,7 +1,5 @@
 
 let url = 'https://jsonplaceholder.typicode.com/posts/';
-let async = true;
-let user = "Letuver", password = "lafron";
 
 const body = JSON.stringify({
     fname: "Dmitry",
@@ -19,8 +17,11 @@ const getFunction = (method, url, itemId) =>{
     xhr.send(null);
 
     xhr.onload = function() {
-        let responseObj = xhr.response;
-        console.log(responseObj);
+        // if(xhr.response.length){
+        //     console.log(`Готово, получили ${xhr.response.length} байт`);
+        // }
+        console.log("Method GET");
+        console.log(xhr.response);        
     };  
 };
 
@@ -35,14 +36,12 @@ const sendFunction = (method, url, parameters) => {
     xhr.send(parameters);
 
     xhr.onload = function() {
+        console.log("Method POST");
         if (xhr.status != 200 && xhr.status != 201) {
             console.log(`Ошибка ${xhr.status}: ${xhr.statusText}`); 
         } 
         else { 
-            let responseObj = xhr.response;
-            console.log(xhr);
-            console.log(responseObj); 
-            console.log(`Готово, получили ${xhr.response.length} байт`); 
+            console.log(xhr.response); 
         }
     };
     
@@ -52,3 +51,4 @@ const sendFunction = (method, url, parameters) => {
 getFunction("GET", url, 44);
 
 sendFunction("POST", url, body);
+
